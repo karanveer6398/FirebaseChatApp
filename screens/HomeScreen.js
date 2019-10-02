@@ -1,12 +1,20 @@
 import React from 'react';
-import {SafeAreaView, View, Text, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
+import { SafeAreaView, View, Text,Image, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
 import User from '../User';
 import styles from '../constants/styles';
-import firebase from 'firebase'; 
+import firebase from 'firebase';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Chats'
+    static navigationOptions = ({navigation})=>{
+        return{
+            title: 'Chats',
+            headerRight:(
+                <TouchableOpacity>
+                    <Image source={require('../images/user.png')} style={ {width:32,height:32}}/>
+                </TouchableOpacity>
+            )
+        }
+        
     }
 
     state = {
@@ -17,11 +25,17 @@ export default class HomeScreen extends React.Component {
         dbRef.on('child_added', (val) => {
             let person = val.val();
             person.phone = val.key;
-            this.setState((prevState) => {
-                return {
-                    users: [...prevState.users, person]
-                }
-            })
+            if (person.phone === User.phone) {
+                User.name = person.name
+            } else {
+
+
+                this.setState((prevState) => {
+                    return {
+                        users: [...prevState.users, person]
+                    }
+                })
+            }
         })
     }
 
@@ -32,11 +46,11 @@ export default class HomeScreen extends React.Component {
     }
     renderRow = ({ item }) => {
         return (
-            <TouchableOpacity 
-            onPress={()=> this.props.navigation.navigate('Chat', item)}
-            style={{padding:10,borderBottomColor:'#ccc',borderBottomWidth:1}}
+            <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Chat', item)}
+                style={{ padding: 10, borderBottomColor: '#ccc', borderBottomWidth: 1 }}
             >
-                <Text style={{fontSize:20}}> {item.name}
+                <Text style={{ fontSize: 20 }}> {item.name}
                 </Text>
             </TouchableOpacity>
         )
