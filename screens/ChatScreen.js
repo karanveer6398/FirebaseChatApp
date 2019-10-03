@@ -22,7 +22,8 @@ export default class ChatScreen extends React.Component {
                 phone: props.navigation.getParam('phone'),
             },
             textMessage: '',
-            messageList:[]
+            messageList:[],
+            abc:""
         }
     }
 
