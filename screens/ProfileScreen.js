@@ -1,5 +1,5 @@
 import React from'react';
-import { SafeAreaView, View, Text,TextInput,TouchableOpacity,Alert,AsyncStorage} from 'react-native';
+import { SafeAreaView, View, Text,TextInput,TouchableOpacity,Alert,AsyncStorage,Image} from 'react-native';
 import User from '../User';
 import styles from '../constants/styles';
 import firebase from 'firebase';
@@ -40,6 +40,7 @@ changeName=async() => {
         return(
           
                 <SafeAreaView style ={styles.container}>
+                    <Image style={{width:250,height:250,marginBottom:50}} source={require("../images/friend.jpg")}/>
                     <Text style ={{fontSize:20,alignItems:'center'}}>
                     {User.phone}
                     </Text>
