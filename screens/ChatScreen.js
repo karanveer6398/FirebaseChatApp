@@ -84,7 +84,7 @@ export default class ChatScreen extends React.Component {
                 marginBottom:10,
             }}>
                 {
-                    item.message.substring(0,22).length == 22 ? 
+                    item.message.substring(0,22) === "data:image/png;base64," ? 
                     <Image style={{width:50,height:50}} source={{uri:item.message}}/> :
                 
                 <Text style ={{color:'#fff', padding:7, fontSize:16}}> 
