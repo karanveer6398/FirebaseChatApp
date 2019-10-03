@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, View, Text, TextInput,Dimensions, TouchableOpacity } from 'react-native';
+import { SafeAreaView, View, Text,Image, TextInput,Dimensions, TouchableOpacity } from 'react-native';
 import User from '../User';
 import firebase from 'firebase';
 
@@ -116,11 +116,14 @@ export default class ChatScreen extends React.Component {
                         placeholder="Type message..."
                         onChangeText={this.handleChange('textMessage')}
                     />
-                    <TouchableOpacity onPress={this.sendMessage} style={{paddingBottom:10,marginLeft:5}}>
+                    <TouchableOpacity onPress={this.sendMessage} style={{paddingBottom:17,marginRight:3,marginBottom:10}}>
+                  
                         <Text style={styles.btnText}>Send
 
                 </Text>
+                
                     </TouchableOpacity>
+                    
                 </View>
             </SafeAreaView>
         )

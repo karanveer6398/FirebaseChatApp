@@ -1,7 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, Text,Image, TouchableOpacity, FlatList, AsyncStorage } from 'react-native';
+import { SafeAreaView, View, Text,Image, TouchableOpacity, FlatList } from 'react-native';
 import User from '../User';
-import styles from '../constants/styles';
 import firebase from 'firebase';
 
 export default class HomeScreen extends React.Component {
@@ -9,8 +8,8 @@ export default class HomeScreen extends React.Component {
         return{
             title: 'Chats',
             headerRight:(
-                <TouchableOpacity>
-                    <Image source={require('../images/user.png')} style={ {width:32,height:32}}/>
+                <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
+                    <Image source={require('../images/user.png')} style={ {width:32,height:32,marginRight:7}}/>
                 </TouchableOpacity>
             )
         }
@@ -40,10 +39,7 @@ export default class HomeScreen extends React.Component {
     }
 
 
-    _logout = async () => {
-        await AsyncStorage.clear();
-        this.props.navigation.navigate('Auth');
-    }
+  
     renderRow = ({ item }) => {
         return (
             <TouchableOpacity
