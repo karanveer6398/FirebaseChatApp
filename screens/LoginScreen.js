@@ -1,5 +1,5 @@
 
-import {View,Text,StatusBar,AsyncStorage,Alert,TextInput,TouchableOpacity} from 'react-native';
+import {View,Text,StatusBar,AsyncStorage,Alert,TextInput,TouchableOpacity,Image} from 'react-native';
 import React from 'react'
 import User from '../User';
 import styles from '../constants/styles';
@@ -39,6 +39,8 @@ this.props.navigation.navigate('App');
   render(){
     return(
       <View style ={styles.container}>
+          <Image style={{width:250,height:250,marginBottom:50}} source={require("../images/friend.jpg")}/>
+
 <TextInput
 placeholder="Phone Number"
 
@@ -56,7 +58,7 @@ onChangeText={this.handleChange('name')}
 />
 <TouchableOpacity onPress={this.submitForm}>
   <Text style={styles.btnText}
-  >Enter</Text>
+  >Login</Text>
 </TouchableOpacity>
 
 

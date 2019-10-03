@@ -2,7 +2,8 @@ import React from 'react';
 import { SafeAreaView, View, Text,Image, TextInput,Dimensions, TouchableOpacity } from 'react-native';
 import User from '../User';
 import firebase from 'firebase';
-
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import ImagePicker from 'react-native-image-crop-picker'
 
 import styles from '../constants/styles';
 import { FlatList } from 'react-native-gesture-handler';
@@ -22,9 +23,7 @@ export default class ChatScreen extends React.Component {
                 phone: props.navigation.getParam('phone'),
             },
             textMessage: '',
-            messageList:[],
-            abc:""
-        }
+            messageList:[]        }
     }
 
     componentWillMount(){
@@ -82,18 +81,45 @@ export default class ChatScreen extends React.Component {
                 borderRadius:5,
                 marginBottom:10,
             }}>
+                {
+                    item.message.substring(0,22).length == 22 ? 
+                    <Image style={{width:50,height:50}} source={{uri:item.message}}/> :
+                
                 <Text style ={{color:'#fff', padding:7, fontSize:16}}> 
                 {item.message} 
 
                 </Text>
+                }
 
                 <Text style ={{color:'#eee', padding:3,fontSize:12}}>
                     {this.convertTime(item.time)}
                 </Text>
+                
                 </View>
         )
     }
-
+    OpenCamera = () =>{
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            includeBase64:true
+          }).then(image => {
+            this.state.textMessage=`data:image/png;base64,${image.data}`;
+            this.sendMessage();
+          });
+    }
+    OpenGallery = () =>{
+        ImagePicker.openPicker({
+            width: 300,
+            height: 400,
+            includeBase64:true
+          }).then(image => {
+            this.state.textMessage=`data:image/png;base64,${image.data}`;
+            this.sendMessage();
+          });
+    }
+        
+    
     render() {
 
         let{height,width}=Dimensions.get('window');
@@ -117,13 +143,24 @@ export default class ChatScreen extends React.Component {
                         placeholder="Type message..."
                         onChangeText={this.handleChange('textMessage')}
                     />
-                    <TouchableOpacity onPress={this.sendMessage} style={{paddingBottom:17,marginRight:3,marginBottom:10}}>
+                    <View style={{flexDirection:"column",justifyContent:"space-around"}}>
+                    <TouchableOpacity onPress={this.sendMessage} style={{paddingBottom:0,marginRight:3,marginBottom:10}}>
                   
                         <Text style={styles.btnText}>Send
 
                 </Text>
                 
                     </TouchableOpacity>
+                    <View style={{flexDirection:"row"}}>
+                    <TouchableOpacity onPress={()=>this.OpenCamera()}>
+                        <Icon name={"camera"} size={25} color={"#000000"}/>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={()=>this.OpenGallery()}>
+                        <Icon name={"attachment"} size={25} color={"#000000"}/>
+                    </TouchableOpacity>
+                    </View>
+                    </View>
                     
                 </View>
             </SafeAreaView>
