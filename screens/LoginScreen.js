@@ -7,7 +7,8 @@ import firebase from 'firebase';
 
 export default class LoginScreen extends React.Component{
 
-    static navigationOptions ={
+    static navigationOp
+    tions ={
         header:null
     }
 state ={
@@ -21,13 +22,14 @@ handleChange = key=>val=>{
 
 
 submitForm=async ()=>{
+  
   if (this.state.phone.length < 10){
 Alert.alert('Error','Wrong Phone Number')
   }
 else if (this.state.name.length < 1){
   Alert.alert('Error','Wrong Name')
 }else{
- // save user data
+ // save user data in local storage
  await AsyncStorage.setItem('userPhone',this.state.phone);
 User.phone = this.state.phone;
 firebase.database().ref('users/' + User.phone).set({name: this.state.name});

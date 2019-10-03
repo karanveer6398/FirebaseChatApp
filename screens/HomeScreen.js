@@ -7,6 +7,7 @@ export default class HomeScreen extends React.Component {
     static navigationOptions = ({navigation})=>{
         return{
             title: 'Chats',
+            headerStyle:{backgroundColor: '#89c9b5'},
             headerRight:(
                 <TouchableOpacity onPress={()=>navigation.navigate('Profile')}>
                     <Image source={require('../images/user.png')} style={ {width:32,height:32,marginRight:7}}/>

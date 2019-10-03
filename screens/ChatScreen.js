@@ -11,7 +11,9 @@ import { FlatList } from 'react-native-gesture-handler';
 export default class ChatScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: navigation.getParam('name', null)
+            title: navigation.getParam('name', null),
+            headerStyle:{backgroundColor: '#89c9b5'},
+            
         }
     }
 
