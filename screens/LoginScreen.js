@@ -11,6 +11,8 @@ export default class LoginScreen extends React.Component{
     tions ={
         header:null
     }
+
+    
 state ={
   phone:'',
   name:''
@@ -22,7 +24,7 @@ handleChange = key=>val=>{
 
 
 submitForm=async ()=>{
-  
+
   if (this.state.phone.length < 10){
 Alert.alert('Error','Wrong Phone Number')
   }
@@ -40,10 +42,18 @@ this.props.navigation.navigate('App');
 }
   render(){
     return(
+      
       <View style ={styles.container}>
+        <Text style ={{alignItems:'center',fontSize:29}}>
+          Welcome To
+        </Text>
+        <Text style ={{alignItems:'center',fontSize:29}}>
+          React Chat
+        </Text>
           <Image style={{width:250,height:250,marginBottom:50}} source={require("../images/friend.jpg")}/>
 
 <TextInput
+
 placeholder="Phone Number"
 
 keyboardType="number-pad"
