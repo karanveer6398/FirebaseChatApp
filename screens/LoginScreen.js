@@ -9,7 +9,8 @@ export default class LoginScreen extends React.Component{
 
     static navigationOp
     tions ={
-        header:null
+        header:null,
+        
     }
 
     

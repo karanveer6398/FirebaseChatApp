@@ -1,5 +1,5 @@
 import React from'react';
-import { SafeAreaView, View, Text,TextInput,TouchableOpacity,Alert,AsyncStorage,Image} from 'react-native';
+import { SafeAreaView, View,Text,Button,TextInput,TouchableOpacity,Alert,AsyncStorage,Image} from 'react-native';
 import User from '../User';
 import styles from '../constants/styles';
 import firebase from 'firebase';
@@ -12,6 +12,7 @@ import firebase from 'firebase';
 export default class ProfileScreen extends React.Component {
     static navigationOptions = {
         title:'Profile'
+        
     }
 
 state={
@@ -42,15 +43,28 @@ changeName=async() => {
                 <SafeAreaView style ={styles.container}>
                     <Image style={{width:250,height:250,marginBottom:50}} source={require("../images/friend.jpg")}/>
                     <Text style ={{fontSize:20,alignItems:'center'}}>
+                     < Text>
+                     Your Phone Numer is:</Text>
                     {User.phone}
                     </Text>
+                    < Text>
+                     Click on your name to edit </Text>
+                    <TextInput
+                    
+                        placeholder={this.state.name}
+                        style ={styles.input}
+                        onChangeText={this.handleChange('name')}
+                    />
 
-                   
-            <TextInput
+
+            {/* <TextInput
             style={styles.input}
             value={this.state.name}
             onChangeText={this.handleChange('name')}
-            />
+            /> */}
+
+
+
             <TouchableOpacity onPress={this.changeName}>
                 <Text style={styles.btnText}>
                     Change Name
@@ -63,8 +77,11 @@ changeName=async() => {
                 </Text>
             </TouchableOpacity>
 
+
                 </SafeAreaView>
           
-        )
+        );
+
+
     }
 }

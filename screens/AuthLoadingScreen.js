@@ -10,7 +10,7 @@ export default class AuthLoadingScreen extends React.Component {
   }
 
 componentWillMount(){
-  // Your web app's Firebase configuration
+  //  web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyC8_Ppg4AUFp0Uq0rqQ4zkUuNFHmOdn3oI",
     authDomain: "fir-chat-6b9c5.firebaseapp.com",
@@ -31,7 +31,7 @@ componentWillMount(){
     this.props.navigation.navigate(User.phone ? 'App' : 'Auth');
   };
 
-  // Render any loading content that you like here
+
   render() {
     return (
       <View>

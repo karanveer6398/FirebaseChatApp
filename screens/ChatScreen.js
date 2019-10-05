@@ -159,7 +159,7 @@ export default class ChatScreen extends React.Component {
                     </TouchableOpacity>
 
                     <TouchableOpacity onPress={()=>this.OpenGallery()}>
-                        <Icon name={"attachment"} size={25} color={"#000000"}/>
+                        <Icon name={"attachment"} size={25} color={"#000000"} />
                     </TouchableOpacity>
                     </View>
                     </View>
